@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>HTML + CSS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <section class="description-container">
+        <h1>Yamaguchi<br>Voice Control</h1>
+        <p>Вы можете управлять программами массажа или<br>самим креслом с помощью голосовых команд, приведённых ниже.
+          Коснитесь кратковременно кнопки голосового управления, расположенной на левом подлокотнике, для запуска сеанса
+          голосового управления.
+        </p>
+        <p>Произнесите одну из доступных команд. Если<br>произнесённая команда распознана, вы<br>услышите ответ и кресло
+          приступит к<br>выполнению запроса.
+        </p>
+        <h1 class="command">СКАЖИ:<br><span>«ОКЕЙ, ЯМАГУЧИ»</span></h1>
+      </section>
+      <section>
+        <div class="scene-container">
+          <div class="hole" id="hole"></div>
+          <div class="character-container" id="character-container">
+            <img src="girl.png" class="character" id="character" />
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="interface-container">
+          <img src="interface.png" class="interface" />
+        </div>
+      </section>
+    </div>
+  </div>
+  <script>
+    function animateCharacter() {
+      const hole = document.getElementById("hole");
+      const character = document.getElementById("character");
+      const characterContainer = document.getElementById(
+        "character-container"
+      );
+
+      hole.style.width = "215px";
+      hole.style.height = "61px";
+
+      setTimeout(() => {
+        character.style.bottom = "10%";
+        character.style.transform = "translateX(-50%) translateY(-10px)";
+
+        setTimeout(() => {
+          hole.style.width = "160px";
+          characterContainer.style.height = "700px";
+        }, 2000);
+
+        setInterval(() => {
+          character.style.transform = "translateX(-50%) translateY(0)";
+
+          setTimeout(() => {
+            character.style.transform = "translateX(-50%) translateY(-10px)";
+          }, 1500);
+        }, 3000);
+      }, 2000);
+    }
+
+    window.addEventListener("load", animateCharacter);
+  </script>
+</body>
+
+</html>
